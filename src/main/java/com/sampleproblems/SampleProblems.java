@@ -1,5 +1,6 @@
 package com.sampleproblems;
 
+
 /**
  *
  */
@@ -31,15 +32,101 @@ public class SampleProblems {
                     .println("An error ocurrs with input words. Check again.");
             return;
         }
-        /*final String reverseString = new StringBuilder(input).reverse()
-                .toString();
-       */
+        /*
+         * final String reverseString = new StringBuilder(input).reverse()
+         * .toString();
+         */
         final int len = input.length();
         String reverseString = null;
-        for (int i= len -1; i >=0; i--) {
+        for (int i = len - 1; i >= 0; i--) {
             reverseString += input.charAt(i);
         }
         System.out.println(reverseString);
+    }
+
+    /**
+     * Reverse Number
+     * 
+     * @param number
+     */
+    public void reverseNumber(final int numberToReverse) {
+
+        int number = numberToReverse;
+        int reversedNumber = 0;
+        int tempValue = 0;
+
+        while (number > 0) {
+            // Strip off last digit
+            tempValue = number % 10;
+            // Create Reversed Number
+            reversedNumber = reversedNumber * 10 + tempValue;
+            number = number / 10;
+        }
+        System.out.println(reversedNumber);
+    }
+
+    Node head;
+
+    private Node reverse(final Node n) {
+        head = n;
+        if (n.next == null) {
+            return head;
+        }
+
+        Node nextNode = n.next;
+        n.next = null;
+        nextNode = reverse(nextNode);
+        nextNode.next = n;
+        return n;
+    }
+
+    /**
+     * Reverse a LinkedList
+     */
+    public void reverseSingleLinkedList() {
+        final Node n1 = new Node(1);
+        final Node n2 = new Node(2);
+        final Node n3 = new Node(3);
+        n1.next = n2;
+        n2.next = n3;
+        head = n1;
+
+        reverse(head);
+        printList(head);
+    }
+
+    public Node reverseLinkedList(final Node head) {
+        Node current = head;
+        Node newHead = null;
+        while (current != null) {
+            final Node tmp = current;
+            current = current.next;
+            tmp.next = newHead;
+            newHead = tmp;
+        }
+        return newHead;
+    }
+
+    public void printList(final Node head) {
+        Node temp = head;
+        while (temp != null) {
+            System.out.format("%d ", temp.value);
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+
+    public void addToTheLast(final Node node) {
+        if (head == null) {
+            head = node;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+
+            temp.next = node;
+        }
     }
 
     /**
@@ -47,12 +134,36 @@ public class SampleProblems {
      */
     public SampleProblems() {
         // Count words in a string
-        countWords("this is a test");
-        countWords("demo application");
-        countWords("demo");
-        countWords(null);
+        // countWords("this is a test");
+        // countWords("demo application");
+        // countWords("demo");
+        // countWords(null);
         // Reverse String
-        reverseString("Welcome to java");
+        // reverseString("Welcome to java");
+        // Substrings of a String
+        // final String test = "this is a demo string";
+        // System.out.println(test.substring(1, 10));
+        // Reverse number
+        // reverseNumber(1234578);
+        // Reverse linked list
+        // reverseSingleLinkedList();
+        // ReverseLinkedList
+        //
+        // Creating a linked list
+        final Node head = new Node(5);
+        addToTheLast(head);
+        addToTheLast(new Node(6));
+        addToTheLast(new Node(7));
+        addToTheLast(new Node(1));
+        addToTheLast(new Node(2));
+
+        printList(head);
+
+        // Reversing LinkedList
+        final Node reverseHead = reverseLinkedList(head);
+        System.out.println("After reversing");
+        printList(reverseHead);
+
     }
 
     /**
