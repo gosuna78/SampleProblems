@@ -22,7 +22,7 @@ public class SampleProblems {
     public SampleProblems() {
         // Count words in a string
         // countWords("this is a test");
-        countWords("demo application");
+        /*countWords("demo application");
         countWords("demo");
         countWords(null);
         // Reverse String
@@ -63,7 +63,8 @@ public class SampleProblems {
             System.out.println(tempNum);
         }
         // Reverse words
-        System.out.println(reverseWords("My name is Gilberto"));
+        System.out.println(reverseWords("My name is Gilberto"));*/
+       
 
     }
 
